@@ -1,0 +1,76 @@
+body{
+    background-color: grey;
+    overflow-x: hidden;
+}
+
+
+
+.button {
+  
+  font-size: 1.5em;
+  background-color: lightgray;
+}
+
+#switches {
+  
+  font-family: 'Original Surfer', cursive;
+  margin-left: 26px;
+  
+}
+
+
+
+.container-header{
+   padding-top: 30px;
+}
+
+.container-circles
+ {
+    padding-top: 30px;
+    
+}
+
+
+
+
+.circle{
+    
+    width: 100px;
+    height: 100px;
+    
+    border-radius:50%;
+   
+    box-shadow:0 0 10px #000;
+  }
+  
+  .circle:after{
+    content:"";
+    padding-bottom:100%;
+    display:block;
+  }
+  
+  .circle-red {
+      
+       border: 5px solid red;
+  }
+  
+   .circle-blue {
+       border:2px solid blue;
+  }
+  
+   .circle-green {
+       border:2px solid green;
+  }
+  
+   .circle-yellow {
+       border:2px solid yellow;
+  }
+  
+  .top-row{
+       padding-bottom: 50px;
+  }
+  .middle-row{
+      padding-top: 50px;
+      padding-bottom: 50px;
+      
+  }
