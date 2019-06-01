@@ -1,12 +1,12 @@
 <!DOCTYPE html>
-<!-- HTML5 Hello world by kirupa - http://www.kirupa.com/html5/getting_your_feet_wet_html5_pg1.htm -->
+
 <html lang="en-us">
 
 <head>
 	<meta charset="utf-8">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 	<link rel="stylesheet" href="css/style.css" type="text/css" />
-	
+
 	<title>Simon Game</title>
 
 </head>
@@ -15,18 +15,27 @@
 	<div class="container container-header">
 		<div class="row">
 			<div class="col">
-			
+
 				<div class="header" align="center">
 					<h1>Simple Simon Game</h1>
 				</div>
-	
-				<div id="switches" align="right">
 				
-					<button class="button" id="on">Power:on/off</button><br>
-					<button class="button" id="strict">Strict mode</button>
+				<div class="container-switch" align="right">
+					<h2>Power</h2>
+				<label class="switch" >
+  				<input type="checkbox" id="on">
+  				<span class="slider round"></span>
+				</label>
+				
+				<h2>Strict Mode</h2>
+				<label class="switch" >
+  				<input type="checkbox" id="strict">
+  				<span class="slider round"></span>
+				</label>	
 				</div>
-			
 				
+
+
 			</div>
 		</div>
 	</div>
@@ -45,14 +54,18 @@
 			</div>
 			<div class="col">
 				<button class="button" id="start">
-					<h2>Click here to Play!</h2>
+					<h2>Start</h2>
 				</button>
-				
-				<div id="turn"></div>
-				<div class = "counter-text">
+
+
+				<div class="counter-text">
 					Current Score
+					<div id="turn"></div>
 				</div>
 			</div>
+
+
+
 			<div class="col">
 				<div class="circle circle-blue" id="blue"></div>
 			</div>
@@ -67,7 +80,7 @@
 
 	</div>
 
-<script type="text/javascript" src="js/index.js"></script>
+	<script type="text/javascript" src="js/index.js"></script>
 </body>
 
 </html>

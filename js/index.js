@@ -10,7 +10,7 @@ let noise = true;
 let on = false;
 let win;
 
-const turnConter = document.querySelector("#turn");
+const turnCounter = document.querySelector("#turn");
 const green = document.querySelector("#green");
 const blue = document.querySelector("#blue");
 const yellow = document.querySelector("#yellow");
@@ -20,6 +20,7 @@ const onButton = document.querySelector("#on");
 const startButton = document.querySelector("#start");
 
 strictButton.addEventListener('click',(event) => {
+    console.log("text")
         if (strictButton.onClick == true) {
             strict = true;
         } else {
@@ -27,12 +28,15 @@ strictButton.addEventListener('click',(event) => {
         }
 })
 
-onButton.addEventListener('click', (event) =>{
-    if (onButton.onclick == true) {
-        on = true;
-        turnConter.innerHTML = "0"; 
-    } else {
-        on = false;
-        turnConter.innerHTML = "";
-    }
-})
+onButton.addEventListener('click', (event) => {
+    console.log("poop")
+  if (onButton.checked == true) {
+    on = true;
+    turnCounter.innerHTML = "-";
+  } else {
+    on = false;
+    turnCounter.innerHTML = "";
+   
+  }
+});
+
