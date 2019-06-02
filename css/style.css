@@ -8,7 +8,7 @@ body{
 .button {
   
   font-size: 1.5em;
-  background-color: #e63243;
+  background-color: lightgrey;
 }
 
 #switches {
@@ -59,20 +59,23 @@ body{
   }
   
   .circle-red {
+      background: darkred;
       
-       border: 5px solid red;
   }
   
    .circle-blue {
-       border:2px solid blue;
+     background: darkblue;
+       
   }
   
    .circle-green {
-       border:2px solid green;
+     background: darkgreen;
+       
   }
   
    .circle-yellow {
-       border:2px solid yellow;
+     background: goldenrod;
+       
   }
   
   .top-row{
