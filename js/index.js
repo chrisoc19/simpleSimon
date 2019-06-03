@@ -44,43 +44,44 @@ onButton.addEventListener('click', (event) => {
 startButton.addEventListener('click', (event) => {
     
   if (on || win) {
-      console.log("play")
     play();
   }
 });
 
 function play() {
-    win = false;
-    order = [];
-    playerOrder = [];
-    flash = 0;
-    intervalid = 0;
-    turn = 1;
-    turnCounter.innerHTML = 1;
-    good = true;
+  win = false;
+  order = [];
+  playerOrder = [];
+  flash = 0;
+  intervalid = 0;
+  turn = 1;
+  turnCounter.innerHTML = 1;
+  good = true;
+  for (var i = 0; i < 20; i++) {
+    order.push(Math.floor(Math.random() * 4) + 1);
+  }
+  compTurn = true;
 
-    for (var i = 0; i < 20; i++) {
-        order.push(Math.floor(Math.random() * 4) + 1);
-    }
-    compTurn = true;
-    
-    intervalid = setInterval(gameTurn, 800);
+  intervalid = setInterval(gameTurn, 800);
 }
 
 function gameTurn(){
     on = false;
     
-    if (flash == turn){
+    if (order[flash] == 1)one();
+    { 
         clearInterval(intervalid);
         compTurn = false;
         clearColor();
         on = true;
-    }
+       
+    }one();
     
     if (compTurn) {
+    
         clearColor();
-        setTimeout(() =>{
-           if(order[flash == 1]) one();
+        setTimeout(() => {
+           if(order[flash == 1]) one(); 
            if(order[flash == 2]) two(); 
            if(order[flash == 3]) three(); 
            if(order[flash == 4]) four(); 
@@ -92,6 +93,7 @@ function gameTurn(){
 function one(){
     
     if (noise){
+        console.log("noise1");
         let audio = document.getElementById("clip1");
         audio.play();
     }
@@ -133,3 +135,108 @@ function clearColor () {
     yellow.style.background = "goldenrod";
 }
 
+
+function flashColor () {
+    green.style.background = "lightgreen";
+    red.style.background = "tomato";
+    blue.style.background = "lightskyblue";
+    yellow.style.background = "yellow";
+}
+
+green.addEventListener('click', (event) =>{
+    if (on){
+        playerOrder.push(1);
+       check();
+        one();
+        if(!win){
+            setTimeout(() =>{
+                clearColor();
+            }, 300);
+        }
+    }
+});
+
+red.addEventListener('click', (event) =>{
+    if (on){
+        playerOrder.push(2);
+       check();
+        two();
+        if(!win){
+            setTimeout(() =>{
+                clearColor();
+            }, 300);
+        }
+    }
+});
+
+blue.addEventListener('click', (event) =>{
+    if (on){
+        playerOrder.push(3);
+       check();
+        three();
+        if(!win){
+            setTimeout(() =>{
+                clearColor();
+            }, 300);
+        }
+    }
+});
+
+yellow.addEventListener('click', (event) =>{
+    if (on){
+        playerOrder.push(4);
+       check();
+        four();
+        if(!win){
+            setTimeout(() =>{
+                clearColor();
+            }, 300);
+        }
+    }
+});
+
+function check(){
+    if (playerOrder[playerOrder.length - 1]!== order[playerOrder.length -1])
+    good = false;
+    
+    if (playerOrder.length == 20 && good) {
+        winGame();
+    }
+    
+    if (good == false) {
+        flashColor ();
+        turnCounter.innerHTML = "No!";
+        setTimeout(() =>{
+            turnCounter.innerHTML = turn;
+            clearColor();
+            
+            if (strict) {
+                play();
+            }else {
+                compTurn = true;
+                flash = 0;
+                playerOrder = [];
+                good = true ;
+                intervalid = setInterval(gameTurn, 800);
+            }
+        }, 800);
+        
+        noise = false;
+    }
+    
+    if(turn == playerOrder.length && good && !win) {
+        turn ++;
+        playerOrder = [];
+        compTurn = true;
+        flash = 0;
+        turnCounter.innerHTML = turn;
+        intervalid = setInterval(gameTurn, 800);
+    }
+}
+
+function winGame () {
+    flashColor();
+    turnCounter.innerHTML = "win!";
+    on = false;
+    win = true;
+}
